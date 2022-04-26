@@ -1,0 +1,58 @@
+---
+title: "Gaussian Mixture Models (GMM)"
+author: "Jiaying Wu"
+date: "27/01/2022"
+output: html_document
+---
+
+### What is Gaussian Mixture Models (GMM)?
+
+Consider generating a label-data point pair (k, x),
+
+- Tossing a dice with K faces.
+
+     - Same as sampling from a multinomial distribution on k elements
+     
+     - The parameter of the multinomial are: $\phi_{k} \geq 0, \sum_{k=1}^{K} \phi_{k} = 1, p(z_{n} = k) = \phi_{k}$
+
+- For each k,
+
+    - Assume data points are sample from Gaussian distribution $N(\mu_{k}, \sum_{k})$, $\mu_{k}$ is the mean, $\sum_{k}$ is the covaraince matrix.
+    
+    - We have a collection of these Gaussian dirtibutions, each of which correspond to one of K dice faces.
+    
+    
+- We don't know the labels and try to find the latent variables ($z_{1},z_{2},...z_{n}$) where $z_{n} \in \text{{1,...,K}}$ represents the latent label for a data point $x_{n}$.
+    
+- The parameter of the model, $\theta := (\phi, \mu_{1}, \sum_{1},...,\mu_{k}, \sum_{k})$    
+    
+- Use the Maximum Likelihood Estimation (MLE)    
+
+
+### What is MLE?
+
+A method of estimating the parameters of a statistical model given observations, by finding the parameter values that maximize the likelihood of making the observations.
+    
+### Problems
+
+It's hard to find the global solution of incomplete data likelihood function, need to use iterative optimization algorithm (EM method) for problem with latent variables.
+
+
+### Expectation Maximization (EM) for GMMs
+
+Goal: find maximum likelihood solution for models having latent variables.
+
+1. Choose some initial values for the parameters.
+
+2. Alternate between the following steps until a stopping condition is met:
+
+    - In the E step, use the current values for the parameters to caculate the posterior proabilities $\gamma(z_{nk}) = p(Z |X, \theta^{old})$
+
+    - In the M step, re-estimate the parameters ($\mu_{k}, \sum_{k}$ and $\phi_{k}$) based on the $\gamma(z_{nk})$ from the previous step. That is, $\theta^{new} \gets \arg \max \limits_{\theta} \sum_{z} p(Z|X,\theta^{old} lnp(X,Z|\theta)$
+
+
+    - $\theta^{old} \gets \theta^{new}$
+
+
+
+

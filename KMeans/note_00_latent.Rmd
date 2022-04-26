@@ -1,0 +1,10 @@
+---
+title: "Latent Variables"
+author: "Jiaying Wu"
+date: "27/01/2022"
+output: html_document
+---
+
+### What is latent variables?
+
+As we try assign a set of training data points into K groups. The **label** of the training data points are **latent** or **hidden**. We call these latent variables.

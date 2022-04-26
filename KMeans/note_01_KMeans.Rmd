@@ -1,0 +1,41 @@
+---
+title: "Kmeans"
+author: "Jiaying Wu"
+date: "27/01/2022"
+output: html_document
+---
+
+### KMeasn Algorithm
+
+Goal: Assign the data points into K distinct groups.
+
+- Similar points are grouped together.
+
+- Similarity is based on a distance measure.
+
+### How it work?
+
+1. Start with an initial guess of K cluster centres ($\mu_{1}^{(0)},\mu_{2}^{(0)},...,\mu_{K}^{(0)}$)
+
+2. Iterate the following 2 steps until a stopping criterion met:
+
+    2.1 Update assignment of data points to cluster
+    
+    - Caculate the distance of each data points to all cluster centres
+    
+    - Assign the data point to the cluster with the minimum distance
+    
+    2.2 Update centres of the cluster
+        
+    - For each cluster, caculate the new centre as the everage of all data points
+        
+    - $\mu_{K}^{(\tau+1)} = \frac{\sum_{n} r_{nk} x_{n}}{\sum_{n} r_{nk}}$
+    
+    - $r_{nk} = \begin{cases} 1 & \quad \text{if } x_{n} \text{ assigned to cluster k}\\ 0  & \quad \text{otherwise} \end{cases}$
+    
+### Problems
+
+1. **Kmeans is sensitive to initial values**. The different initial cluster centres may result in different solution.
+
+2. **Kmeans is non-probabilistic**. Only support hard-assignment, data point can only be assigned to only one cluster.
+
